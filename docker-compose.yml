@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  apps:
+    container_name: apps
+    build: .
+    ports:
+      - "5001:80"
+    depends_on:
+      - db
+
+  db:
+    container_name: db-apps
+    image: mariadb:10.9.4
+    restart: always
+    ports:
+      - 3306
+    environment:
+      MARIADB_ROOT_PASSWORD: example-root-password
+      MARIADB_DATABASE: learn_dotnet_restful_api
+    volumes:
+      - ./conf/query:/docker-entrypoint-initdb.d
