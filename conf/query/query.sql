@@ -35,5 +35,3 @@ VALUES (
         'Username',
         '2022-12-26'
     );
-
-SELECT * FROM user;
